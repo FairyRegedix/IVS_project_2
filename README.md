@@ -1,9 +1,9 @@
-### Prostředí
+__*Prostředí*__
 -----------
 * Windows 64bit
 
 
-### Autoři
+__*Autoři*__
 -----------
 **What can I say except you're welcome**
 * xmicek09 - Richard Míček
