@@ -1,9 +1,9 @@
-# Prostredi
+### Prostředí
 -----------
 * Windows 64bit
 
 
-# Autori
+### Autoři
 -----------
 **What can I say except you're welcome**
 * xmicek09 Richard Míček
@@ -12,6 +12,6 @@
 * xdemsk00 Patrik Demský
 
 
-# Licence
+### Licence
 -----------
-> Tento program je poskytovan pod licencí GNU GPL v. 3.
+> Tento program je poskytován pod licencí GNU GPL v. 3.
