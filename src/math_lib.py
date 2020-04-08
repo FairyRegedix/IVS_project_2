@@ -1,19 +1,18 @@
-
 #define + (add)
 def add(x,y):
-	return (x + y)
+	return float(x + y)
 
 #define - (subtract)
 def sub(x,y):
-	return (x - y)
+	return float(x - y)
 
 #define * (multiplication)
 def mul(x,y):
-	return (x * y)
+	return float(x * y)
 
 #define / (division)
 def div(x,y):
-	return (x / y)
+	return float(x / y)
 
 #define fact (factorial)
 def fact(x):
@@ -27,8 +26,8 @@ def fact(x):
 
 #define ** (exponentiation)
 def exp(x,y):
-	return(x ** y)
+	return float(x ** y)
 
 #define // (extraction)
 def ext(x,y):
-	return (x ** (1.0 / (y)))
+	return float(x ** (1.0 / (y)))
