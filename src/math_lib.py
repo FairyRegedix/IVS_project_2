@@ -12,7 +12,7 @@ def mul(x,y):
 
 #define / (division)
 def div(x,y):
-	return float(x / y)
+	return float(x / float(y))
 
 #define fact (factorial)
 def fact(x):
