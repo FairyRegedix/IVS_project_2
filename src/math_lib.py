@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 This is basic math library
 IVS Project 2
