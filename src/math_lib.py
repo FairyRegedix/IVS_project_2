@@ -1,3 +1,9 @@
+"""
+This is basic math library
+IVS Project 2
+Author : Patrik Demský (xdemsk00)
+Date : 9.4.2020
+"""
 #define + (add)
 def add(x,y):
 	return float(x + y)
@@ -31,3 +37,11 @@ def exp(x,y):
 #define // (extraction)
 def ext(x,y):
 	return float(x ** (1.0 / (y)))
+
+#define abs (absolute value)
+def abs(x):
+	if x < 0:
+		x = -x
+	else:
+		x = x
+	return float(x)
