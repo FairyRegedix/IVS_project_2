@@ -82,11 +82,9 @@ class TestAdvancedOperations(unittest.TestCase):
         self.assertEqual(math_lib.fact(5), 120)
 
         #only defined for positive integers
-        '''
         self.assertRaises(ValueError, math_lib.fact, 10.5)
         self.assertRaises(ValueError, math_lib.fact, -10)
         self.assertRaises(ValueError, math_lib.fact, -10.5)
-        '''
 
     def test_exponent(self):
         #test 0 ^ 0
@@ -102,24 +100,23 @@ class TestAdvancedOperations(unittest.TestCase):
 
     def test_root_exttraction(self):
         #basic function
-            self.assertEqual(math_lib.ext(4, 2), 2)
-            self.assertEqual(math_lib.ext(8, 3), 2)
-            self.assertAlmostEqual(math_lib.ext(11.313708499, 3.5), 2.000000) #add more zeroes for arbitrary precision
+        self.assertEqual(math_lib.ext(4, 2), 2)
+        self.assertEqual(math_lib.ext(8, 3), 2)
+        self.assertAlmostEqual(math_lib.ext(11.313708499, 3.5), 2.000000) #add more zeroes for arbitrary precision
 
         #even root of negative number
-            self.assertRaises(ValueError, math_lib.ext, -4, 2)
-            self.assertRaises(ValueError, math_lib.ext, -126, 10)
+        self.assertRaises(ValueError, math_lib.ext, -4, 2)
+        self.assertRaises(ValueError, math_lib.ext, -126, 10)
 
         #odd root of negative number
-            self.assertEqual(math_lib.ext(-8, 3), -2)
-            self.assertEqual(math_lib.ext(-243, 5), -3)
+        self.assertEqual(math_lib.ext(-8, 3), -2)
+        self.assertEqual(math_lib.ext(-243, 5), -3)
 
-'''
     def test_abs(self):
         self.assertEqual(math_lib.abs(0), 0)
         self.assertEqual(math_lib.abs(-1357), 1357)
         self.assertEqual(math_lib.abs(456), math_lib.abs(-456))
-'''
+
 
 if __name__ == '__main__':
     unittest.main()
