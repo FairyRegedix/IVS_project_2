@@ -1,0 +1,3 @@
+Program tráví nejvíce času voláním funkcí z matematické knihovny, což se dá očekávat. Časově je ovšem velmi efektivní, 
+testoval jsem i se soubory o více než 1000 číslech a odezva je vždy pod vteřinu. Optimalizovat by se mohlo samotné čtení z stdin, 
+jelikož v aktuálním stavu jsem potřeboval několik for cyklů, což rozhodně není nejlepší řešení.
