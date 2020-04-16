@@ -1,2 +1,2 @@
 test:
-	-python -m unittest mathlib_unittest
+	-python3 -m unittest mathlib_unittest
