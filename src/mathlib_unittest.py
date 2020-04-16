@@ -2,11 +2,10 @@
 """Unit tests for custom math library.
 
 Todo:
-    -decide if 0 ^ 0 is defined
     -more tests?
 
-Usage:
-    $ python -m unittest mathlib_unittest
+Example:
+    $ python3 -m unittest mathlib_unittest
     
     OR
 
@@ -88,6 +87,7 @@ class TestAdvancedOperations(unittest.TestCase):
 
     def test_exponent(self):
         #test 0 ^ 0
+        self.assertEqual(math_lib.exp(0, 0), 1)
 
         #test n ^ 0
         self.assertEqual(math_lib.exp(500, 0), 1)
@@ -96,7 +96,12 @@ class TestAdvancedOperations(unittest.TestCase):
         #basic function
         self.assertEqual(math_lib.exp(500, 2), math_lib.mul(500, 500))
         self.assertEqual(math_lib.exp(-500, 2), math_lib.mul(500, 500))
+        self.assertAlmostEqual(math_lib.exp(5, -3), 0.008)
 
+        #root extraction
+        self.assertEqual(math_lib.exp(4, 0.5), 2)
+        self.assertRaises(ValueError, math_lib.exp, -4, 0.5)
+        self.assertAlmostEqual(math_lib.exp(-8, 0.33), -2)
 
     def test_root_exttraction(self):
         #basic function
@@ -109,8 +114,8 @@ class TestAdvancedOperations(unittest.TestCase):
         self.assertRaises(ValueError, math_lib.ext, -126, 10)
 
         #odd root of negative number
-        self.assertEqual(math_lib.ext(-8, 3), -2)
-        self.assertEqual(math_lib.ext(-243, 5), -3)
+        self.assertAlmostEqual(math_lib.ext(-8, 3), -2)
+        self.assertAlmostEqual(math_lib.ext(-243, 5), -3)
 
     def test_abs(self):
         self.assertEqual(math_lib.abs(0), 0)
