@@ -4,7 +4,7 @@
 Todo:
     -more tests?
 
-Usage:
+Example:
     $ python3 -m unittest mathlib_unittest
     
     OR
