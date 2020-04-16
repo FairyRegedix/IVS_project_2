@@ -1,0 +1,30 @@
+Plán 2. projektu predmetu IVS:
+
+Do 16.3 Výber prostredia.
+Do 17.3 Spísanie plánu a priebehu tvorby projektu.
+Do 18.3 hotový grafický návrh projektu.
+Do 25.3 hotové testy.
+Do 30.3 hotová knižnica.
+Do 5.4 hotová grafika.
+Do 12.4 hotove prepojenie s GUI a knižnicou.
+Do 18.4 hotový profiling.
+Do 22.4 hotová dokumentácia.
+Do 28.4 ladenie projektu.
+Do 2.5 oprava všetkých chýb ktoré nastali pri vývoji
+Do 10.5 mať hotový výsledný produkt.
+
+
+xdemsk00(základ GUI a základné matematické operácie)
+xdzibe00(pokročilé matematické operácie)
+xmicek09(profiling a instalátor)
+xmojze00(testy a dokumentácia)
+
+Komunikačné kanály: Discord, 
+Pravidlá pre komunikáciu: Neurážať sa navzájom, nevysmievať sa ostatným, snažiť sa obmedziť sarkazmus, snažiť sa byť empatický vzhľadom
+na pandémiu.
+
+Systém pre správu verzií a hosting + informácie : GitHub(s prístupom pre cvičiacích), Discord (pre prípadne dohadovanie zmien medzi týmom),
+Trello(na správu splnených častí programu).
+
+
+
