@@ -272,6 +272,16 @@ class Calculator:
     def clear(self):
         self.screen.delete("1.0", END)
 
+    """Function decides whether to delete one or three characters depending on the last character on screen
+    """
+    def screen_del(self):
+        scr_text = self.screen.get("1.0", END)
+        scr_text = scr_text.split()
+        if(is_float(scr_text[len(scr_text)-1]) or is_integer(scr_text[len(scr_text)-1])):
+            self.screen.delete("end-2c", END)
+        else:
+            self.screen.delete("end-4c", END)
+
     """This function creates a button, and takes one compulsory argument, the value that should be on the button
     """
     def createButton(self,val,write=True,width=5):
@@ -282,7 +292,7 @@ class Calculator:
     """
     def buttonClick(self,butt_type):
         if(butt_type == 'del'):
-            self.screen.delete("end-2c", END)
+            self.screen_del()
         elif(butt_type == 'eq'):
             equation = self.screen.get("1.0", END)
             self.clear()
