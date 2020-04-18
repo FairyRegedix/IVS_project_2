@@ -31,9 +31,9 @@ def is_float(value):
 """Replaces part of the equation with the result
 """
 def replace(result, temp, i):
-    result.remove(result[i-1])
-    result.remove(result[i-1])
-    result.remove(result[i-1])
+    del result[i-1]
+    del result[i-1]
+    del result[i-1]
     result.insert(i-1, str(temp))
 
 """Sets error message
@@ -151,8 +151,8 @@ def high_priority_op(result, temp, i):
             #TODO: Instead of error disable =
         elif is_float(result[i+1]):
             temp = math.ext(float(result[i+1]), 2)
-            result.remove(result[i])
-            result.remove(result[i])
+            del result[i]
+            del result[i]
             result.insert(i, str(temp))
             i -= 1
         elif not is_float(result[i+1]):
@@ -168,8 +168,8 @@ def highest_priority_op(result, temp, i):
             #TODO: Instead of error disable =
         elif is_integer(result[i+1]) and int(result[i+1]) >= 0:
             temp = math.fact(int(result[i+1]))
-            result.remove(result[i])
-            result.remove(result[i])
+            del result[i]
+            del result[i]
             result.insert(i, str(temp))
             i -= 1
         elif not is_integer(result[i+1]) or int(result[i+1]) < 0:
