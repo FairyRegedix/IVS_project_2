@@ -225,21 +225,21 @@ class Calculator:
         button9 = Button(root,text='9',width=8, height=2, command=lambda: self.buttonClick('9'))
         button10 = Button(root,text='0',width=18, height=2, command=lambda: self.buttonClick('0'))  
         button11 = Button(root,text='.',width=8, height=2, command=lambda: self.buttonClick('.'))
-        button12 = Button(root,text='+',width=8, height=2, command=lambda: self.buttonClick(' + '))
-        button13 = Button(root,text='-',width=8, height=2, command=lambda: self.buttonClick(' - '))
-        button14 = Button(root,text='*',width=8, height=2,background='orange', command=lambda: self.buttonClick(' * '))
-        button15 = Button(root,text='/',width=8, height=2,background='orange', command=lambda: self.buttonClick(' / '))
-        button16 = Button(root,text='=',width=8, height=5,background='orange', command=lambda: self.buttonClick('eq'))
+        button12 = Button(root,text='+',width=8, height=2, background='orange', command=lambda: self.buttonClick(' + '))
+        button13 = Button(root,text='-',width=8, height=2, background='orange', command=lambda: self.buttonClick(' - '))
+        button14 = Button(root,text='*',width=8, height=2, command=lambda: self.buttonClick(' * '))
+        button15 = Button(root,text='/',width=8, height=2, command=lambda: self.buttonClick(' / '))
+        button16 = Button(root,text='=',width=8, height=5, background='orange', command=lambda: self.buttonClick('eq'))
         button17 = Button(root,text='|x|',width=8, height=2, command=lambda: self.buttonClick('abs'))  
         button18 = Button(root,text='^',width=8, height=2, command=lambda: self.buttonClick(' ^ '))
-        button19 = Button(root,text='√',width=8, height=2,background='orange', command=lambda: self.buttonClick(' √ '))
-        button20 = Button(root,text='AC',width=8, height=2, command=lambda: self.clear())
-        button21 = Button(root,text='DEL',width=8, height=2,background='orange', command=lambda: self.buttonClick('del'))
+        button19 = Button(root,text='√',width=8, height=2, command=lambda: self.buttonClick(' √ '))
+        button20 = Button(root,text='AC',width=8, height=2, background='orange', command=lambda: self.clear())
+        button21 = Button(root,text='DEL',width=8, height=2, background='orange', command=lambda: self.buttonClick('del'))
         button22 = Button(root,text='!',width=8, height=2, command=lambda: self.buttonClick(' ! '))
 
         # buttons stored in list
-        buttons = [button20,button17,button18,button19,button22,button12,button13,button21,button7,button8,button9,button15,
-        button4,button5,button6,button14,button1,button2,button3,button10,button11,button16]
+        buttons = [button17,button18,button19,button20,button22,button14,button15,button21,button7,button8,button9,button12,
+        button4,button5,button6,button13,button1,button2,button3,button10,button11,button16]
 
         # intialize counter
         count = 0
