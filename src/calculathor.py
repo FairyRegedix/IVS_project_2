@@ -36,6 +36,8 @@ def replace_ternary(result, temp, i):
     del result[i-1]
     result.insert(i-1, str(temp))
 
+"""Replaces part of the equation with the result
+"""
 def replace_binary(result, temp, i):
     del result[i]
     del result[i]
@@ -46,8 +48,6 @@ def replace_binary(result, temp, i):
 def set_err_msg(result, err_msg):
     result.clear()
     result.append(err_msg)
-
-
 
 """Calculating low priority operations
 
@@ -207,7 +207,7 @@ class Calculator:
         master.title("CalculaThor")
 
         # text screen
-        self.screen = Text(master, state='disabled', width=32, height=5,border = 1,background="light grey", foreground="blue")
+        self.screen = Text(master, state='disabled', width=32, height=5, border = 1, background="light grey", foreground="black")
 
         # position screen in window
         self.screen.grid(row=0,column=0,columnspan=4,padx=5,pady=5)
