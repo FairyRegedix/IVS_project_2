@@ -30,17 +30,24 @@ def is_float(value):
 
 """Replaces part of the equation with the result
 """
-def replace(result, temp, i):
+def replace_ternary(result, temp, i):
     del result[i-1]
     del result[i-1]
     del result[i-1]
     result.insert(i-1, str(temp))
+
+def replace_binary(result, temp, i):
+    del result[i]
+    del result[i]
+    result.insert(i, str(temp))
 
 """Sets error message
 """
 def set_err_msg(result, err_msg):
     result.clear()
     result.append(err_msg)
+
+
 
 """Calculating low priority operations
 
@@ -49,33 +56,31 @@ Returns:
 """
 def low_priority_op(result, temp, i):
     if result[i] == '+':
-        if (i-1) < 0 and is_float(result[i+1]):
+        if result[i+1] == '-':
+            replace_binary(result, result[i+1], i)
+        elif (i-1) < 0 and is_float(result[i+1]):
             result.remove(result[i]) 
-        elif (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
         elif is_float(result[i-1]) and is_float(result[i+1]):
             temp = math.add(float(result[i-1]), float(result[i+1]))
-            replace(result, temp, i)
+            replace_ternary(result, temp, i)
             i -= 1
         elif not is_float(result[i-1]) or not is_float(result[i+1]):
             set_err_msg(result, err_msg)
             return 0
 
     if result[i] == '-':
-        if (i-1) < 0 and is_float(result[i+1]):
+        if result[i+1] == '+':
+            replace_binary(result, result[i], i)
+            if (i-1) < 0: 
+                return 0
+            else:
+                return i
+        elif (i-1) < 0 and is_float(result[i+1]):
             temp = - float(result[i+1])
-            result.remove(result[i])
-            result.remove(result[i])
-            result.insert(i, str(temp))
-        elif (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
+            replace_binary(result, temp, i)
         elif is_float(result[i-1]) and is_float(result[i+1]):
             temp = math.sub(float(result[i-1]), float(result[i+1]))
-            replace(result, temp, i)
+            replace_ternary(result, temp, i)
             i -= 1
         elif not is_float(result[i-1]) or not is_float(result[i+1]):
             set_err_msg(result, err_msg)
@@ -93,13 +98,9 @@ def mid_priority_op(result, temp, i):
         if (i-1) < 0 :
             set_err_msg(result, err_msg)
             return 0 
-        elif (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
         elif is_float(result[i-1]) and is_float(result[i+1]):
             temp = math.mul(float(result[i-1]), float(result[i+1]))
-            replace(result, temp, i)
+            replace_ternary(result, temp, i)
             i -= 1
         elif not is_float(result[i-1]) or not is_float(result[i+1]):
             set_err_msg(result, err_msg)
@@ -109,13 +110,9 @@ def mid_priority_op(result, temp, i):
         if (i-1) < 0:
             set_err_msg(result, err_msg)
             return 0 
-        elif (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
         elif is_float(result[i-1]) and is_float(result[i+1]):
             temp = math.div(float(result[i-1]), float(result[i+1]))
-            replace(result, temp, i)
+            replace_ternary(result, temp, i)
             i -= 1
         elif not is_float(result[i-1]) or not is_float(result[i+1]):
             set_err_msg(result, err_msg)
@@ -132,45 +129,37 @@ def high_priority_op(result, temp, i):
         if (i-1) < 0 :
             set_err_msg(result, err_msg)
             return 0 
-        elif (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
         elif is_float(result[i-1]) and is_float(result[i+1]):
             temp = math.exp(float(result[i-1]), float(result[i+1]))
-            replace(result, temp, i)
+            replace_ternary(result, temp, i)
             i -= 1
         elif not is_float(result[i-1]) or not is_float(result[i+1]):
             set_err_msg(result, err_msg)
             return 0
             
     if result[i] == '√':
-        if (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
-        elif is_float(result[i+1]):
+        if ((i-1) < 0 or not is_float(result[i-1])) and is_float(result[i+1]):
             temp = math.ext(float(result[i+1]), 2)
-            del result[i]
-            del result[i]
-            result.insert(i, str(temp))
+            replace_binary(result, temp, i)
             i -= 1
-        elif not is_float(result[i+1]):
+        elif is_float(result[i-1]) and is_float(result[i+1]):
+            temp = math.ext(float(result[i+1]), float(result[i-1]))
+            replace_ternary(result, temp, i)
+            i -= 1
+        else:
             set_err_msg(result, err_msg)
             return 0 
     return (i + 1)
 
 def highest_priority_op(result, temp, i):
+    if result[i] == '-':
+        if ((i-1) < 0 or not is_float(result[i-1])) and is_float(result[i+1]):
+            temp = - float(result[i+1])
+            replace_binary(result, temp, i)
     if result[i] == '!':
-        if (i+1) > len(result) - 1:
-            set_err_msg(result, err_msg)
-            return 0 
-            #TODO: Instead of error disable =
-        elif is_integer(result[i+1]) and int(result[i+1]) >= 0:
+        if is_integer(result[i+1]) and int(result[i+1]) >= 0:
             temp = math.fact(int(result[i+1]))
-            del result[i]
-            del result[i]
-            result.insert(i, str(temp))
+            replace_binary(result, temp, i)
             i -= 1
         elif not is_integer(result[i+1]) or int(result[i+1]) < 0:
             set_err_msg(result, err_msg)
@@ -191,7 +180,7 @@ def calculate(result):
         result.clear()
         return result
     while(len(result) > 1):
-        while(result.count('!') != 0):
+        while(result.count('!') != 0 or result.count('-') != 0) and i < len(result):
             i = highest_priority_op(result, temp, i)
         else:
             i = 0
@@ -291,17 +280,26 @@ class Calculator:
        calls occur
     """
     def buttonClick(self,butt_type):
-        if(butt_type == 'del'):
+        equation = self.screen.get("1.0", END)  
+        if butt_type == 'del':
             self.screen_del()
-        elif(butt_type == 'eq'):
-            equation = self.screen.get("1.0", END)
-            self.clear()
-            result = calculate(equation)
-            self.screen.insert(END, result)
-        elif(butt_type == 'abs'):
-            result = str(math.abs(float(self.screen.get("1.0", END))))
-            self.clear()
-            self.screen.insert(END, result)
+        elif butt_type == 'eq':        
+            if is_float(equation[len(equation)-2]) or is_integer(equation[len(equation)-1]):
+                self.clear()
+                result = calculate(equation)
+                self.screen.insert(END, result)
+        elif butt_type == 'abs':
+            temp = equation.split()
+            if len(temp) == 2 and temp[0] == '-' and is_float(temp[1]): 
+                result = float(temp[1])
+                result = str(math.abs(result))
+                self.clear()
+                self.screen.insert(END, result)
+            elif len(temp) == 1 and equation[0] == '-':
+                result = float(equation)
+                result = str(math.abs(result))
+                self.clear()
+                self.screen.insert(END, result)
         else:
             self.screen.insert(END, butt_type)
         
