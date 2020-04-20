@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+Kalkukačka
+IVS Project 2
+Author : Patrik Demsk (xdemsk00), Richard Míček (xmicek09)
+Date : 20.4.2020
+"""
 from tkinter import *
 import math_lib as math
 
