@@ -314,7 +314,6 @@ class Calculator:
 """
 
 root = Tk()
-root.iconphoto(False, PhotoImage(file='./mjolnir.ico'))
 root.geometry("269x342")
 my_gui = Calculator(root)
 root.resizable(width=False, height=False)
