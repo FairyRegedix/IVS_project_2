@@ -7,7 +7,7 @@ PY = python3
 .PHONY: all pack clean test doc run profile help sphinx
 
 #runs the program
-all: run
+all: run profile
 
 #requires powershell 5.0 or higher
 #pack for WIS
