@@ -4,7 +4,7 @@
 Todo:
 	-propperly handle root extraction in math_lib.exp()	
 
-Author:
+Authors:
 	Patrik Demský xdemsk00
 	Denis Dzíbela xdzibe00
 
@@ -97,7 +97,7 @@ def fact(x):
 #define ** (exponentiation)
 def exp(x, y):
 	#TODO propperly handle root extraction
-	"""Simple division function.
+	"""Simple exponentiation function.
 
 	x (float): base
 	y (float): exponent

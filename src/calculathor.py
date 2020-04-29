@@ -1,66 +1,67 @@
 # -*- coding: utf-8 -*-
-"""
-Kalkukačka
+"""Kalkukačka
 IVS Project 2
-Author : Patrik Demsk (xdemsk00), Richard Míček (xmicek09)
-Date : 20.4.2020
+
+Authors:
+    Patrik Demský xdemsk00
+    Richard Míček xmicek09
+
+Date:
+    20.4.2020
 """
 from tkinter import *
 import math_lib as math
 
 err_msg = "Syntax ERROR"
 
-"""Checks if string is convertible to integer
-
-Returns:
-    bool -- Can/Can't be converted
-"""
 def is_integer(value):
+    """Checks if string is convertible to integer
+
+    Returns:
+        bool: Can/Can't be converted
+    """
     try:
         int(value)
         return True
     except ValueError:
         return False
 
-"""Checks if string is convertible to float
-
-Returns:
-    bool -- Can/Can't be converted
-"""
 def is_float(value):
+    """Checks if string is convertible to float
+
+    Returns:
+        bool: Can/Can't be converted
+    """
     try:
         float(value)
         return True
     except ValueError:
         return False
 
-"""Replaces part of the equation with the result
-"""
 def replace_ternary(result, temp, i):
+    """Replaces part of the equation with the result"""
     del result[i-1]
     del result[i-1]
     del result[i-1]
     result.insert(i-1, str(temp))
 
-"""Replaces part of the equation with the result
-"""
 def replace_binary(result, temp, i):
+    """Replaces part of the equation with the result"""
     del result[i]
     del result[i]
     result.insert(i, str(temp))
 
-"""Sets error message
-"""
 def set_err_msg(result, err_msg):
+    """Sets error message"""
     result.clear()
     result.append(err_msg)
 
-"""Calculating low priority operations
-
-Returns:
-    int -- Counter
-"""
 def low_priority_op(result, temp, i):
+    """Calculating low priority operations
+
+    Returns:
+        int: Counter
+    """
     if result[i] == '+':
         if result[i+1] == '-':
             replace_binary(result, result[i+1], i)
@@ -94,12 +95,12 @@ def low_priority_op(result, temp, i):
 
     return (i + 1)
 
-"""Calculating middle priority operations
-
-Returns:
-    int -- Counter
-"""
 def mid_priority_op(result, temp, i):
+    """Calculating middle priority operations
+
+    Returns:
+        int: Counter
+    """
     if result[i] == '*':
         if (i-1) < 0 :
             set_err_msg(result, err_msg)
@@ -125,12 +126,12 @@ def mid_priority_op(result, temp, i):
             return 0 
     return (i + 1)
 
-"""Calculating high priority operations
-
-Returns:
-    int -- Counter
-"""
 def high_priority_op(result, temp, i):
+    """Calculating high priority operations
+
+    Returns:
+        int: Counter
+    """
     if result[i] == '^':
         if (i-1) < 0 :
             set_err_msg(result, err_msg)
@@ -172,12 +173,12 @@ def highest_priority_op(result, temp, i):
             return 0 
     return (i + 1)
 
-"""Performs the calculation of the equation
-
-Returns:
-    string -- Result of equation
-"""
 def calculate(result):
+    """Performs the calculation of the equation
+
+    Returns:
+        string: Result of equation
+    """
     temp = 0
     i = 0
     result = result.split()
@@ -205,9 +206,8 @@ def calculate(result):
 
     return result[0]   
 
-"""Calculator class, holds the entire gui code
-"""
 class Calculator:
+    """Calculator class, holds the entire gui code"""
     def __init__(self, master):
         self.master = master
         master.title("CalculaThor")
@@ -262,14 +262,12 @@ class Calculator:
         #arrange "="
         buttons[21].grid(row=5,column=3,rowspan=2)
     
-    """Method to clear the screen
-    """
     def clear(self):
+        """Method to clear the screen"""
         self.screen.delete("1.0", END)
 
-    """Function decides whether to delete one or three characters depending on the last character on screen
-    """
     def screen_del(self):
+        """Function decides whether to delete one or three characters depending on the last character on screen"""
         scr_text = self.screen.get("1.0", END)
         scr_text = scr_text.split()
         if(is_float(scr_text[len(scr_text)-1]) or is_integer(scr_text[len(scr_text)-1])):
@@ -277,15 +275,13 @@ class Calculator:
         else:
             self.screen.delete("end-4c", END)
 
-    """This function creates a button, and takes one compulsory argument, the value that should be on the button
-    """
     def createButton(self,val,write=True,width=5):
+        """This function creates a button, and takes one compulsory argument, the value that should be on the button"""
         return Button(self.master, text=val,command = lambda: self.click(val,write), width=8, height = 2)
 
-    """Checks the button type, if it's a number or operand it gets typed out into the text box, otherwise function
-       calls occur
-    """
     def buttonClick(self,butt_type):
+        """Checks the button type, if it's a number or operand it gets typed out into the text box, otherwise function calls occur
+        """
         equation = self.screen.get("1.0", END)  
         if butt_type == 'del':
             self.screen_del()

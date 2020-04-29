@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Unit tests for custom math library.
 
+Author:
+    Denis Dzíbela xdzibe00
+
 Todo:
     -more tests?
 
@@ -11,8 +14,6 @@ Example:
 
     $ make test
 
-Author:
-    Denis Dzíbela xdzibe00
 """
 import unittest
 import math_lib
