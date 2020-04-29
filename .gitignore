@@ -3,7 +3,10 @@
 # Edit at https://www.gitignore.io/?templates=python,visualstudiocode
 
 #sphinx
-*.html
+doc/
+_build/
+_build/html/*
+_build\doctrees\
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -120,5 +123,7 @@ dmypy.json
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+src/sphinx/_build/doctrees/environment.pickle
 
 # End of https://www.gitignore.io/api/python,visualstudiocode
