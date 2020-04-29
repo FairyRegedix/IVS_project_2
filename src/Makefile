@@ -4,7 +4,7 @@
 
 PY = python3
 
-.PHONY: all clean pack help
+.PHONY: all pack clean test doc run profile help sphinx
 
 all:
 
@@ -31,7 +31,13 @@ test: mathlib_unittest.py math_lib.py
 
 #runs script to generate project documentation
 doc:
-#spustit script od Elišky
+	-cd sphinx && make html
+	-mkdir ..\doc 
+	-robocopy /MIR sphinx\_build\html ..\doc
+
+#installs sphinx
+sphinx:
+	-pip install sphinx
 
 #runs the calculator
 run: calculathor.py math_lib.py
