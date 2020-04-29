@@ -27,6 +27,7 @@ pack: doc clean
 
 #removes files that are not needed
 clean:
+	-rmdir /s /q %cd%\..\doc
 	-rmdir /s /q %cd%\__pycache__
 	-del /q %cd%\..\calculathor.exe
 #some other stuff?
@@ -40,6 +41,7 @@ doc:
 	-cd sphinx && make html
 	-mkdir ..\doc 
 	-robocopy /MIR sphinx\_build\html ..\doc
+	-cd sphinx && make clean
 
 #installs sphinx
 sphinx:
