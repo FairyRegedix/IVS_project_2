@@ -6,7 +6,8 @@ PY = python3
 
 .PHONY: all pack clean test doc run profile help sphinx
 
-all:
+#runs the program
+all: run
 
 #requires powershell 5.0 or higher
 #pack for WIS
@@ -14,10 +15,15 @@ pack: doc clean
 	-mkdir ..\..\src
 	-robocopy /MIR ..\src ..\..\src
 	-copy ..\uzivatelska_prirucka.pdf ..\..
+	-copy ..\hodnoceni.txt ..\..
+	-echo %time% %date% > ..\..\odevzdani.txt
 #hold my breath as I wish for death//oh please god help me
-	-powershell /C Compress-Archive -Path "..\..\src", "..\..\uzivatelska_prirucka.pdf" -DestinationPath ..\..\zipped.zip -CompressionLevel Optimal -Force
+	-powershell /C Compress-Archive -Path "..\..\src", "..\..\uzivatelska_prirucka.pdf", "..\..\hodnoceni.txt", "..\..\odevzdani.txt" -DestinationPath ..\..\xmicek09_xmojze00_xdzibe00_xdemsk00.zip -CompressionLevel Optimal -Force
 	-rmdir /s /q %cd%\..\..\src
 	-del /q %cd%\..\..\uzivatelska_prirucka.pdf
+	-del /q %cd%\..\..\hodnoceni.txt
+	-del /q %cd%\..\..\odevzdani.txt
+#now the world is gone, I'm just one//oh god wake me
 
 #removes files that are not needed
 clean:
