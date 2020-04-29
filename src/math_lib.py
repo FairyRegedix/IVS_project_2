@@ -4,7 +4,7 @@
 Todo:
 	-propperly handle root extraction in math_lib.exp()	
 
-Author:
+Authors:
 	Patrik Demský xdemsk00
 	Denis Dzíbela xdzibe00
 
